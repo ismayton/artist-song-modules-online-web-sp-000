@@ -1,9 +1,12 @@
 require 'pry'
 
 class Artist
+  
+  extend Memorable
+  
   attr_accessor :name
   attr_reader :songs
-
+  
   @@artists = []
 
   def initialize
@@ -15,18 +18,10 @@ class Artist
     @@artists.detect{|a| a.name == name}
   end
 
-  def self.all
-    @@artists
-  end
-
-  def self.reset_all
-    self.all.clear
-  end
-
-  def self.count
-    self.all.count
-  end
-
+  def self.all 
+    @@artists 
+  end 
+  
   def add_song(song)
     @songs << song
     song.artist = self
